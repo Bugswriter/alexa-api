@@ -25,4 +25,3 @@ def read_users(db: Session = Depends(get_db)):
 def read_user(user_id: int, db: Session = Depends(get_db)):
     user = usercrud.get(db, user_id)
     return user
-
