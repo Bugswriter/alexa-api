@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from app.db.database import SessionLocal
 from sqlalchemy.orm import Session
-from app.crud.crud_spot import spot as spotcrud
+#from app.crud.crud_spot import spot as spotcrud
 
 router = APIRouter()
 
