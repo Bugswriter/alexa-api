@@ -23,7 +23,6 @@ def read_users(username : Optional[str] = None ,db: Session = Depends(get_db)):
 
 
 
-@router.post('/registration')
+@router.post('/')
 def create_user(*, db : Session = Depends(get_db), user : SchemaUserCreate):
     return usercrud.create_user(db= db, user = user)
-    

@@ -10,7 +10,7 @@ class Spot(Base):
     location = Column(String)
     info = Column(String)
     special_attraction = Column(String)
-    thigns_to_do = Column(String)
+    things_to_do = Column(String)
     time_to_visit = Column(String)
     near_by_places = Column(String)
     similar_places = Column(String)

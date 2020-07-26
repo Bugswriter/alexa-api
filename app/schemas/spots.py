@@ -5,7 +5,7 @@ class SpotCreate(BaseModel):
     location : str
     info : str
     special_attraction : str
-    thigns_to_do : str
+    things_to_do : str
     time_to_visit : str
     near_by_places : str
     similar_places : str

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alexa safari Dashboard!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+    <script type="text/javascript">
+      var i = 1
+      $(document).ready(function(){         
+          $("#spotform").on('submit', function(e){
+              e.preventDefault();
+              var spotdata = {
+                  name: $("#name").val(),
+                  location: $("#location").val(),
+                  info: $("#info").val(),
+                  special_attraction: $("#sa").val(),
+                  things_to_do: $("#ttd").val(),
+                  time_to_visit: $("#ttv").val(),
+                  near_by_places: $("#nbp").val(),
+                  similar_places: $("#sp").val(),
+                  how_to_reach: $("#htr").val(),
+              }
+              console.log(JSON.stringify(spotdata));
+              $.ajax({
+                  url: '/api_v1/spots',
+                  type : "POST",
+                  dataType : 'json',
+                  contentType: 'application/json',
+                  data: JSON.stringify(spotdata), 
+                  success : function(result) {
+                      $("#response").append("Spot Submitted - <b>" + i + "</b>");
+                      i++;
+                  }
+              });
+          });
+      });
+    </script>
+
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <b>Alexa Safari</b>
+        </a>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Home
+          </a>
+
+          <a class="navbar-item" href="/docs">
+            Documentation
+          </a>
+
+          <a class="navbar-item" href="/redoc">
+            Detail Docs
+          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Add Spots</h1>
+        <h2 class="subtitle">write data carefully</h2>
+        <div class="notification" id="response">
+          <button class="delete"></button>
+
+        </div>
+        <form action="" method="post" id="spotform">
+          <div class="field">
+            <label class="label">Spot Name:</label>
+            <div class="control">
+              <input class="input" type="text" id="name"  placeholder="e.g fun city" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Location:</label>
+            <div class="control">
+              <input class="input" type="text" id="location" placeholder="e.g. Chopla Road" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Information:</label>
+            <div class="control">
+              <input class="input" type="text" id="info" placeholder="e.g. It's a great place" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Special Attraction:</label>
+            <div class="control">
+              <input class="input" type="text" id="sa" placeholder="e.g. jhule" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Things to do:</label>
+            <div class="control">
+              <input class="input" type="text" id="ttd" placeholder="e.g. rain dance" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Time to visit:</label>
+            <div class="control">
+              <input class="input" type="text" id="ttv" placeholder="e.g. anytime" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Near by places:</label>
+            <div class="control">
+              <input class="input" type="text" id="nbp" placeholder="e.g. my home" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Similar Places</label>
+            <div class="control">
+              <input class="input" type="text" id="sp" placeholder="e.g. pheonix mall" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">How to reach</label>
+            <div class="control">
+              <input class="input" type="text" id="htr" placeholder="e.g. Directions" required>
+            </div>
+          </div>
+          <input type="submit" id="spotsubmit" class="button is-primary is-large" value="Add Spot+"></submit>
+
+</form>
+
+      </div>
+    </section>
+  </body>
+</html>
