@@ -14,7 +14,7 @@ def get_db():
 @router.get("/")
 def read_spots(name : Optional[str] = None,db: Session = Depends(get_db)):
     if name:
-        return spotcrud.get_by_name(db=db, name = name )
+        return spotcrud.get_by_name(db=db, name=name)
     spots = spotcrud.get_multi(db)
     return spots
 
